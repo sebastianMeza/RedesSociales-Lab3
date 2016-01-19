@@ -23,6 +23,27 @@ public class JSONReaderFile {
         
         ArrayList<String[]> lista_aristas = new ArrayList<String[]>();
         ArrayList<Integer[]> lista_aristas_id = new ArrayList<Integer[]>();
+        ArrayList<String> lista_20 = new ArrayList<String>();
+        lista_20.add("Karolcariola");
+        lista_20.add("GiorgioJackson");
+        lista_20.add("SenadorGuillier");
+        lista_20.add("felipeharboe");
+        lista_20.add("camila_vallejo");
+        lista_20.add("gabrielboric");
+        lista_20.add("gustavohasbun");
+        lista_20.add("senadornavarro");
+        lista_20.add("ivanmoreirab");
+        lista_20.add("Chile_Vamos_");
+        lista_20.add("NuevaMayoriacl");
+        lista_20.add("ceciperez1");
+        lista_20.add("urrutiaosvaldo");
+        lista_20.add("ignaciowalker");
+        lista_20.add("lautarocarmona");
+        lista_20.add("RojoEdwards");
+        lista_20.add("Hugo_Gutierrez_");
+        lista_20.add("marconunez");
+        lista_20.add("iallendebussi");
+        lista_20.add("hgonzaduran");
         try {
             nodos = new FileWriter(new File("nodos.txt"));
             aristas = new FileWriter(new File("aristas.txt"));
@@ -45,10 +66,10 @@ public class JSONReaderFile {
                     JSONObject mencion_o = (JSONObject) mencion;            
                     String screen_name_mencionado = (String) mencion_o.get("screen_name");
                     if((screen_name.equals("Karolcariola") || screen_name.equals("GiorgioJackson") || screen_name.equals("SenadorGuillier") || screen_name.equals("felipeharboe") || screen_name.equals("camila_vallejo") || screen_name.equals("gabrielboric") || screen_name.equals("gustavohasbun") || screen_name.equals("senadornavarro") || screen_name.equals("ivanmoreirab") || screen_name.equals("Chile_Vamos_") || screen_name.equals("NuevaMayoriacl") || screen_name.equals("ceciperez1") || screen_name.equals("urrutiaosvaldo") || screen_name.equals("ignaciowalker") || screen_name.equals("lautarocarmona") || screen_name.equals("RojoEdwards") || screen_name.equals("Hugo_Gutierrez_") || screen_name.equals("marconunez") || screen_name.equals("iallendebussi") || screen_name.equals("hgonzaduran"))
-                            && (screen_name_mencionado.equals("Karolcariola") || screen_name_mencionado.equals("GiorgioJackson") || screen_name_mencionado.equals("SenadorGuillier") || screen_name_mencionado.equals("felipeharboe") || screen_name_mencionado.equals("camila_vallejo") || screen_name_mencionado.equals("gabrielboric") || screen_name_mencionado.equals("gustavohasbun") || screen_name_mencionado.equals("senadornavarro") || screen_name_mencionado.equals("ivanmoreirab") || screen_name_mencionado.equals("Chile_Vamos_") || screen_name_mencionado.equals("NuevaMayoriacl") || screen_name_mencionado.equals("ceciperez1") || screen_name_mencionado.equals("urrutiaosvaldo") || screen_name_mencionado.equals("ignaciowalker") || screen_name_mencionado.equals("lautarocarmona") || screen_name_mencionado.equals("RojoEdwards") || screen_name_mencionado.equals("Hugo_Gutierrez_") || screen_name_mencionado.equals("marconunez") || screen_name_mencionado.equals("iallendebussi") || screen_name.equals("hgonzaduran"))){
-                        //System.out.print("Usuario: '" + screen_name+"'");
-                        //System.out.print("\tMencionado: '" + screen_name_mencionado+"'");                    
-                        //System.out.println();
+                            && (screen_name_mencionado.equals("Karolcariola") || screen_name_mencionado.equals("GiorgioJackson") || screen_name_mencionado.equals("SenadorGuillier") || screen_name_mencionado.equals("felipeharboe") || screen_name_mencionado.equals("camila_vallejo") || screen_name_mencionado.equals("gabrielboric") || screen_name_mencionado.equals("gustavohasbun") || screen_name_mencionado.equals("senadornavarro") || screen_name_mencionado.equals("ivanmoreirab") || screen_name_mencionado.equals("Chile_Vamos_") || screen_name_mencionado.equals("NuevaMayoriacl") || screen_name_mencionado.equals("ceciperez1") || screen_name_mencionado.equals("urrutiaosvaldo") || screen_name_mencionado.equals("ignaciowalker") || screen_name_mencionado.equals("lautarocarmona") || screen_name_mencionado.equals("RojoEdwards") || screen_name_mencionado.equals("Hugo_Gutierrez_") || screen_name_mencionado.equals("marconunez") || screen_name_mencionado.equals("iallendebussi") || screen_name_mencionado.equals("hgonzaduran"))){
+                        System.out.print("Usuario: '" + screen_name+"'");
+                        System.out.print("\tMencionado: '" + screen_name_mencionado+"'");                    
+                        System.out.println();
                         if (!(lista_nodos.contains(screen_name))){
                             lista_nodos.add(screen_name);
                             lista_nodos_ocurrencias.add(0);
@@ -88,14 +109,24 @@ public class JSONReaderFile {
             int size_nodo_ocu_list = lista_nodos_ocurrencias.size();
             int size_arista_list = lista_aristas.size();
             int size_arista_id_list = lista_aristas_id.size();
+            int contador_20 = 0;
             System.out.println("cantidad nodos: "+size_nodo_list);
             System.out.println("cantidad nodos ocu: "+size_nodo_ocu_list);
             System.out.println("cantidad aristas: "+size_arista_list);
             System.out.println("cantidad aristas_id: "+size_arista_id_list);
             for(int i= 0;i<size_nodo_list;i++){
-                nodos.write(String.format("%d %s",(i+1),lista_nodos.get(i)));
-                nodos.write(System.lineSeparator());
+                if(lista_20.contains(lista_nodos.get(i))){
+                    nodos.write(String.format("%d %s",(i+1),lista_nodos.get(i)));
+                    nodos.write(System.lineSeparator());
+                    contador_20++;
+                }
+                else{
+                    nodos.write(String.format("%d",(i+1)));
+                    nodos.write(System.lineSeparator());
+                }
             }
+            System.out.println("contador 20: "+contador_20);
+
             for(int i= 0;i<size_nodo_ocu_list;i++){
                 nodos_ocurrencias.write(String.format("%d, %d,%s",lista_nodos_ocurrencias.get(i),(i+1),lista_nodos.get(i)));
                 nodos_ocurrencias.write(System.lineSeparator());
