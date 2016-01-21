@@ -67,39 +67,41 @@ public class JSONReaderFile {
                     String screen_name_mencionado = (String) mencion_o.get("screen_name");
                     if((screen_name.equals("Karolcariola") || screen_name.equals("GiorgioJackson") || screen_name.equals("SenadorGuillier") || screen_name.equals("felipeharboe") || screen_name.equals("camila_vallejo") || screen_name.equals("gabrielboric") || screen_name.equals("gustavohasbun") || screen_name.equals("senadornavarro") || screen_name.equals("ivanmoreirab") || screen_name.equals("Chile_Vamos_") || screen_name.equals("NuevaMayoriacl") || screen_name.equals("ceciperez1") || screen_name.equals("urrutiaosvaldo") || screen_name.equals("ignaciowalker") || screen_name.equals("lautarocarmona") || screen_name.equals("RojoEdwards") || screen_name.equals("Hugo_Gutierrez_") || screen_name.equals("marconunez") || screen_name.equals("iallendebussi") || screen_name.equals("hgonzaduran"))
                             || (screen_name_mencionado.equals("Karolcariola") || screen_name_mencionado.equals("GiorgioJackson") || screen_name_mencionado.equals("SenadorGuillier") || screen_name_mencionado.equals("felipeharboe") || screen_name_mencionado.equals("camila_vallejo") || screen_name_mencionado.equals("gabrielboric") || screen_name_mencionado.equals("gustavohasbun") || screen_name_mencionado.equals("senadornavarro") || screen_name_mencionado.equals("ivanmoreirab") || screen_name_mencionado.equals("Chile_Vamos_") || screen_name_mencionado.equals("NuevaMayoriacl") || screen_name_mencionado.equals("ceciperez1") || screen_name_mencionado.equals("urrutiaosvaldo") || screen_name_mencionado.equals("ignaciowalker") || screen_name_mencionado.equals("lautarocarmona") || screen_name_mencionado.equals("RojoEdwards") || screen_name_mencionado.equals("Hugo_Gutierrez_") || screen_name_mencionado.equals("marconunez") || screen_name_mencionado.equals("iallendebussi") || screen_name_mencionado.equals("hgonzaduran"))){
-                        System.out.print("Usuario: '" + screen_name+"'");
-                        System.out.print("\tMencionado: '" + screen_name_mencionado+"'");                    
-                        System.out.println();
-                        if (!(lista_nodos.contains(screen_name))){
-                            lista_nodos.add(screen_name);
-                            lista_nodos_ocurrencias.add(0);
+                        //System.out.print("Usuario: '" + screen_name+"'");
+                        //System.out.print("\tMencionado: '" + screen_name_mencionado+"'");                    
+                        //System.out.println();
+                        if(!screen_name.equals(screen_name_mencionado)){
+                            if (!(lista_nodos.contains(screen_name))){
+                                lista_nodos.add(screen_name);
+                                lista_nodos_ocurrencias.add(0);
+                            }
+                            else{
+                                int index_sm_temp = lista_nodos.indexOf(screen_name);
+                                int contador_temp = lista_nodos_ocurrencias.get(index_sm_temp);
+                                contador_temp++;
+                                lista_nodos_ocurrencias.set(index_sm_temp, contador_temp);
+                            }
+                            if (!(lista_nodos.contains(screen_name_mencionado))){
+                                lista_nodos.add(screen_name_mencionado);
+                                lista_nodos_ocurrencias.add(0);
+                            }
+                            else{
+                                int index_sm_temp = lista_nodos.indexOf(screen_name_mencionado);
+                                int contador_temp = lista_nodos_ocurrencias.get(index_sm_temp);
+                                contador_temp++;
+                                lista_nodos_ocurrencias.set(index_sm_temp, contador_temp);
+                            }
+                            String[] arista_temporal  = new String[2];            
+                            Integer[] aristaID_temporal  = new Integer[2];            
+                            arista_temporal[0] = screen_name;
+                            arista_temporal[1] = screen_name_mencionado;
+                            lista_aristas.add(arista_temporal);
+                            int index1_temp = lista_nodos.indexOf(screen_name);
+                            int index2_temp = lista_nodos.indexOf(screen_name_mencionado);
+                            aristaID_temporal[0] = index1_temp+1;
+                            aristaID_temporal[1] = index2_temp+1;
+                            lista_aristas_id.add(aristaID_temporal);
                         }
-                        else{
-                            int index_sm_temp = lista_nodos.indexOf(screen_name);
-                            int contador_temp = lista_nodos_ocurrencias.get(index_sm_temp);
-                            contador_temp++;
-                            lista_nodos_ocurrencias.set(index_sm_temp, contador_temp);
-                        }
-                        if (!(lista_nodos.contains(screen_name_mencionado))){
-                            lista_nodos.add(screen_name_mencionado);
-                            lista_nodos_ocurrencias.add(0);
-                        }
-                        else{
-                            int index_sm_temp = lista_nodos.indexOf(screen_name_mencionado);
-                            int contador_temp = lista_nodos_ocurrencias.get(index_sm_temp);
-                            contador_temp++;
-                            lista_nodos_ocurrencias.set(index_sm_temp, contador_temp);
-                        }
-                        String[] arista_temporal  = new String[2];            
-                        Integer[] aristaID_temporal  = new Integer[2];            
-                        arista_temporal[0] = screen_name;
-                        arista_temporal[1] = screen_name_mencionado;
-                        lista_aristas.add(arista_temporal);
-                        int index1_temp = lista_nodos.indexOf(screen_name);
-                        int index2_temp = lista_nodos.indexOf(screen_name_mencionado);
-                        aristaID_temporal[0] = index1_temp+1;
-                        aristaID_temporal[1] = index2_temp+1;
-                        lista_aristas_id.add(aristaID_temporal);
                     }
 
                 }
